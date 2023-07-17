@@ -1,0 +1,10 @@
+Tcode steps for Table.
+
+1) Need to create TMG for Table.
+2) go to Se 93
+3)enter T code name , select transaction with parameter (for table we select T code with parameter).
+4) In transaction field :  SM30 .
+5) click on initial page
+6) select all GUI tick.
+7) VIEWNAME : TMG name / Table name.
+   Update   : X
