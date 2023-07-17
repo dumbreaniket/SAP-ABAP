@@ -1,0 +1,23 @@
+8 jun
+
+
+FORM zcreate_entry.
+  DATA : wa_makt TYPE makt
+.
+
+  SELECT SINGLE *
+    FROM makt
+     INTO wa_makt
+    WHERE matnr = zad_mara-matnr.
+
+  IF sy-subrc = 0.
+    zad_mara-maktx = wa_makt-maktx.
+  ENDIF.
+
+
+
+ENDFORM.
+
+
+
+(create new field and after entring the value , we have to get automatic decription of that value)

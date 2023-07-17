@@ -1,0 +1,11 @@
+Step 1 : - SM36
+
+step2  : pass job name (Auto inspection lot creation)
+         job class (c)
+
+step3 : click on save -->pass program name -->save --> steps lost overview window open --> click back -->
+        click on start condition --> Immediate --> save -- > save 
+
+Note : If you have to debug the background job --> goto sm37 -- pass date as per requirement( background job creation date)--> select bg job & write jdbg & enter
+        
+

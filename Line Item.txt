@@ -1,0 +1,29 @@
+LOOP: looop will read each and evry record in the inetrnal table. 
+READ : statement will read only single record at at time and not more than that.
+
+
+
+
+************ Structure declared*********
+
+Line_Item TYPE I
+
+
+**************LINE ITEM ******************
+LOOP AT int_vbak INTO wa_vbak.
+Select COUNT( * ) into wa_vbak-line_item
+FROM ZAD_vbap
+WHERE Zvbeln = wa_vbak-zvbeln.
+Modify Int_vbak FROM wa_vbak.
+ENDLOOP.
+
+
+
+***************Fieldcat Declared**************
+
+CLEAR wa_fieldcat.
+wa_fieldcat-col_pos = 9.
+wa_fieldcat-fieldname = 'Line_Item'.
+*wa_fieldcat-tabname = 'INT_VBAK'.
+wa_fieldcat-seltext_l = 'LINE ITEM'.
+APPEND wa_fieldcat TO int_fieldcat.

@@ -1,0 +1,60 @@
+Loop at Int_tbl into wa_tbl.
+CALL FUNCTION 'CONVERSION_EXIT_ALPHA_OUTPUT'
+  EXPORTING
+    input        = wa_tbl-belnr
+ IMPORTING
+   OUTPUT        = wa_tbl-belnr.
+ APPEND wa_tbl to int_tbl.
+ ENDLOOP.
+
+
+OR
+
+
+wa_fieldcat-datatype = 'NUMC'.
+
+
+OR
+
+
+Loop at Int_tbl into wa_tbl.
+CALL FUNCTION 'CONVERSION_EXIT_ALPHA_OUTPUT'
+  EXPORTING
+    input        = wa_tbl-belnr
+ IMPORTING
+   OUTPUT        = wa_tbl-belnr.
+ Modify Int_tbl from wa_tbl.
+ ENDLOOP.
+
+(USE MODIFY)
+
+
+OR
+
+For material number leading zeros eliminate then use below function.
+
+
+CONVERSION_EXIT_MAT1_OUTPUT
+
+
+
+
+
+
+
+
+OR
+
+Loop at It_file into wa_file.
+
+
+  CALL FUNCTION 'CONVERSION_EXIT_ALPHA_OUTPUT'
+    EXPORTING
+      input         = wa_file-matnr
+   IMPORTING
+     OUTPUT        = wa_file-matnr
+            .
+Modify It_file from wa_file.
+ ENDLOOP.
+
+

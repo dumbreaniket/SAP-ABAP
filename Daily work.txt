@@ -1,0 +1,83 @@
+QPLEXT_INSPECTION_LOT_CREATE
+QPL1_INSPECTION_LOT_CREATE
+CO_QM_INSPECTION_LOT_CREATE
+
+
+7 Dec: 
+
+Check the suitable  BAPI & BADI for Recurring inspection.
+
+Use the BAdI 'INSPECTIONLOT_UPDATE' - method 'CREATE_AT_SAVE'.
+
+BAPI : CO_QM_INSPECTION_LOT_CREATE
+       QPL1_INSPECTION_LOT_CREATE
+Test the badi & bapi for same requirement..
+
+8 Dec :
+
+Create a Z program ZZRQAAAS10 (QA07). At the time of execution 'No batches have been found for processing' msg is displaying so 
+debug the program and check the condition where going wrong.
+Try to find the VFDAT & QNDAT field logic .
+
+9 Dec(friday) :  Debug the standard program ,got the field of inspection lot(QNDAT).as per given requirement 
+         inspection lot to be created automatically 15 days prior to the Inspection due date.
+         For Date calculation:- "RP_CALC_DATE_IN_INTERVAL".
+
+12 dec (mon) :[RK] Create a Z Program "z_auto_insp_lot". 
+               1)For creating insepction lot use the bapi i.e QPL1_INSPECTION_LOT_CREATE.
+               2)Use this FM -> QPL1_UPDATE_MEMORY :- Update memory stack for actual posting.
+               3)QPL1_INSPECTION_LOTS_POSTING :- Post lot to DataBase... (QALS table also updated)
+
+13 dec (Tue) :[RK] As per given requirement inspection lot to be created automatically 15 days prior to the Inspection due date.
+               Inspection lot is created automatically before 15 days of insp due date.
+
+14 dec (wed) : JSR ---> Invoice Auto scheduling - Email log.
+               As per given requirement changes done also maintain the Z table for Email id & add logic for same.
+               
+15 dec (thur): leave ( exam) .         
+
+16 dec (friday) :  [JSR]----> add the Z table in invoice auto scheduling.
+                   Rising---->debug the background job ----> Coyote commumnication failure error.
+
+19 dec( monday) : [Rising] ---> POD Background Job debugging.
+20 dec (Tuesday): [Rising] ---> Debug the POD background job debugging.
+                   
+                  [JSR] ---> As we have checked below TR is imported with Error in QAS system. 
+                             Because some objects are missing in TR which we have used in Report.    
+                   ---> create TR --> To resolve this, I have created new TR in DEV .
+                  DEVK909346       SUMITH       SD : SH : ZEMAIL_ID table for Auto Invoice
+
+21 dec(wed)     : [Rising] --> System driven putaway (report)
+22 dec (Thur)   : [Rising] --> System driven Putway task is completed.
+23 dec (friday) : [Rising] --> System driven Putway task - Trying to find the enhanchment point.
+                                System driven Put way task: Trying to find the enhancement point.
+                                Check the blog:
+                                EWM put away logic: Function group /SCWM/PUT_BIN_DET
+                                – Sweet spot to enhance based on custom requirements: Enhancement spot /SCWM/ES_CORE_PTS
+
+26 dec(Monday)  : [Rising] --> System Driven Putway (Enhancement).
+                               1) Take a meeting with Abhjijit for same purpose , getting to understand the transaction
+                                  & test case.
+                               2)as per given blog 'https://wmexperts.online/2020/06/22/enhance-putaway-bin-determination/' for
+                                  finding the enhancement point, badi etc.
+                               3) As per given information I check the FM   /SCWM/PUT_BIN_DET & Badi
+                                  /SCWM/EX_CORE_PTS_FILT_SORT is not suitable for our condition.  
+                                  Because  Badi /SCWM/EX_CORE_PTS_FILT_SORT is  not for multiple use.
+
+27 dec (Tue)    : [Rising] --> System Driven putway (Enhancement).
+                               1) UI5 Meeting
+                               2) Working on System driven putway enhancement.
+                                  As per given requirement : i got the enhancement point and write logic.
+
+28 dec (wed)    : [Rising] --> System driven Putway (enhancement).
+                               1) UI5 Meeting.
+                               2) Working on System driven putway enhancement
+
+29 dec (thur)   : [Rising] --> System driven Putway (enhancement).
+
+30 dec (fri)    : [Rising] --> System driven Putway (enhancement).
+                                  
+
+                                  
+                        
+                 

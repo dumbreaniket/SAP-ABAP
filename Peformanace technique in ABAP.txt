@@ -1,0 +1,14 @@
+PERFORMANCE TECHNIQUE IN ABAP.
+
+1. Never use select *.
+2. Never use select statment inside the loop.
+3. Never use nested loops.
+4. USe always key fields in where condition.
+5. Use always for all entries for joining tables.
+6. Check the parent table whether it is initial or not while using for all entries.
+7. Use binary search in read statment to improve performance.
+8. Sort the data in internal table while using binary search.
+9.Use SY_SUBRC check for read statement.
+10. Follow all naming convention in coding part.
+11. When we copy standard program & create Z program same , then Activate all the includes. 
+12. ALV by factory method.(https://blogs.sap.com/2021/11/17/defining-and-displaying-user-defined-layouts-using-factory-method/)

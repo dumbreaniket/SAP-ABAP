@@ -1,0 +1,44 @@
+
+ BREAK-POINT .
+*   **Purpose : Shelf life expiry date calculation (Should be -1)
+*           if Shelf life expiry date period.Ind as 'M'.
+DATA : LV_IPRKZ TYPE DATTP, "Period Indicator for Shelf Life Expiration Date
+       LV_MVGR1 TYPE MVGR1,
+       LV_MHDHB TYPE MHDHB,
+       LV_MATNR TYPE MATNR,
+       LV_MTART TYPE MTART ,
+*       I_BNCOM LIKE  BNCOM ,
+       C_RDMHD TYPE  MARA-RDMHD .
+
+
+*CONSTANTS : C_FERT TYPE MTART VALUE 'FERT'.
+
+IF SY-TCODE EQ 'MIGO'.
+
+  SELECT SINGLE MVGR1 FROM MVKE INTO LV_MVGR1 WHERE MATNR = is_mseg-matnr ."GOITEM-MATNR ."I_BNCOM-MATNR .
+  IF SY-SUBRC = 0 .
+
+    SELECT SINGLE  MATNR MTART IPRKZ MHDHB FROM MARA INTO (LV_MATNR, LV_MTART, LV_IPRKZ,LV_MHDHB) WHERE MATNR = is_mseg-matnr ."GOITEM-MATNR . "I_BNCOM-MATNR.
+    IF SY-SUBRC = 0 AND LV_IPRKZ EQ '2'  AND  LV_MTART EQ 'FERT'.
+      C_RDMHD = ' '.
+*      SUBTRACT 1 FROM is_mseg-vfdat ."GOITEM-VFDAT .
+*       MODIFY OUTTAB INDEX 1.
+*      GOITEM-VFDAT = GOITEM-VFDAT - 1 .
+
+*     CALL FUNCTION 'CALCULATE_DATE'
+*      EXPORTING
+*        DAYS              = '-1'
+*        MONTHS            = '0'
+*        START_DATE        = is_mseg-vfdat  "GOITEM-VFDAT
+*      IMPORTING
+*        RESULT_DATE       = is_mseg-vfdat .
+
+
+
+    ENDIF.
+  ENDIF.
+ENDIF.
+
+
+
+
